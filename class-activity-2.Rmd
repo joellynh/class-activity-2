@@ -17,7 +17,7 @@ D2 <- filter(D1, schoolyear == 20112012)
 ```{r}
 #Generate a histogramof the percentage of free/reduced lunch students (frl_percent) at each school
 
-hist()
+hist(D2$frl_percent)
 
 #Change the number of breaks to 100, do you get the same impression?
 
@@ -76,10 +76,13 @@ pairs(D5)
 1. Create a simulated data set containing 100 students, each with a score from 1-100 representing performance in an educational game. The scores should tend to cluster around 75. Also, each student should be given a classification that reflects one of four interest groups: sport, music, nature, literature.
 
 ```{r}
-#rnorm(100, 75, 15) creates a random sample with a mean of 75 and standard deviation of 20
+score <- rnorm(100, 75, 15) #creates a random sample with a mean of 75 and standard deviation of 20
 #pmax sets a maximum value, pmin sets a minimum value
 #round rounds numbers to whole number values
 #sample draws a random samples from the groups vector according to a uniform distribution
+interest <- c("sport", "music", "nature", "literature")
+assign_interest <- sample(interest, 100, replace = TRUE, prob = NULL)
+df <- data.frame("score" = score, "interest" = assign_interest)
 
 
 ```
@@ -87,7 +90,7 @@ pairs(D5)
 2. Using base R commands, draw a histogram of the scores. Change the breaks in your histogram until you think they best represent your data.
 
 ```{r}
-
+hist(df$score)
 ```
 
 
